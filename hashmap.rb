@@ -2,7 +2,7 @@ class HashMap
   attr_reader :bucket
 
   def initialize
-    @bucket = Array.new(16)
+    @buckets = Array.new(16)
   end
 
   def hash(value)
