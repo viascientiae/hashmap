@@ -1,5 +1,5 @@
 class HashMap
-  attr_reader :bucket
+  attr_reader :buckets
 
   def initialize
     @buckets = Array.new(16)
