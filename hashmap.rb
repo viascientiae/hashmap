@@ -87,7 +87,7 @@ class LinkedList
     current_node.next_node_pointer = Node.new(key, value)
   end
 
-  def find(key, value)
+  def find(key)
     index = 0
     current_node = @head_node
 
