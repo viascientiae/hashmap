@@ -25,7 +25,7 @@ class HashMap
     if @buckets[bucket].nil?
       @buckets[bucket] = LinkedList.new(key, value)
     else
-      position = @buckets[bucket].find(key, value)
+      position = @buckets[bucket].find(key)
       if position
         @buckets[bucket].change_data(value, position)
       else
