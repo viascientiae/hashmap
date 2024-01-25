@@ -68,6 +68,17 @@ class HashMap
   def index(key)
     index = hash(key) % capacity
   end
+
+  def get(key)
+    bucket = index(key)
+    linkedlist = @buckets[bucket]
+    if linkedlist
+      index_of_key = linkedlist.find(key)
+      linkedlist.at(index_of_key)
+    else
+      nil
+    end
+  end
 end
 
 class LinkedList
@@ -110,6 +121,18 @@ class LinkedList
     end
 
     current_node.value = value if current_node
+  end
+
+  def at(index)
+    counter = 0
+    current_node = @head_node
+
+    while counter != index
+      current_node = current_node.next_node_pointer
+      counter += 1
+    end
+
+    current_node.value
   end
 end
 
