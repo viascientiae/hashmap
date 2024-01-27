@@ -79,6 +79,19 @@ class HashMap
       nil
     end
   end
+
+  def key?(key)
+    bucket = index(key)
+    linkedlist = @buckets[bucket]
+    if linkedlist
+      index_of_key = linkedlist.find(key)
+      if index_of_key
+        true
+      end
+    else
+      false
+    end
+  end
 end
 
 class LinkedList
