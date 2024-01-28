@@ -125,6 +125,12 @@ class HashMap
     @buckets.each { |bucket| keys << bucket.list_keys if bucket != nil }
     keys.flatten!
   end
+
+  def values
+    values = Array.new
+    @buckets.each { |bucket| values << bucket.list_values if bucket != nil }
+    values.flatten!
+  end
 end
 
 class LinkedList
@@ -234,6 +240,18 @@ class LinkedList
     end
 
     keys
+  end
+
+  def list_values
+    values = Array.new
+    current_node = @head_node
+
+    while current_node != nil
+      values << current_node.value
+      current_node = current_node.next_node_pointer
+    end
+
+    values
   end
 end
 
