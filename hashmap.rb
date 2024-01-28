@@ -59,7 +59,7 @@ class HashMap
       next if bucket.nil?
       current_bucket_node = bucket.head_node
         while current_bucket_node != nil
-          set(current_bucket_node.data)
+          set(current_bucket_node.key, current_bucket_node.value)
           current_bucket_node = current_bucket_node.next_node_pointer
         end
     end
@@ -90,6 +90,19 @@ class HashMap
       end
     else
       false
+    end
+  end
+
+  def remove(key)
+    if key?(key)
+      bucket = index(key)
+      linkedlist = @buckets[bucket]
+      index_of_key = linkedlist.find(key)
+      value = linkedlist.at(index_of_key)
+      linkedlist.remove_at(index_of_key)
+      value
+    else
+      nil
     end
   end
 end
@@ -146,6 +159,37 @@ class LinkedList
     end
 
     current_node.value
+  end
+
+  def remove_at(index)
+    counter = 0
+    current_node = @head_node
+
+    if index == 0
+      @head_node = current_node.next_node_pointer
+      current_node = nil
+    else
+      while counter <= index - 2
+        current_node = current_node.next_node_pointer
+        counter += 1
+      end
+
+      current_node.next_node_pointer = current_node.next_node_pointer.next_node_pointer
+    end
+
+  end
+
+  def to_s
+    string = ""
+    current_node = @head_node
+
+    while current_node != nil
+      string += "( #{current_node.key}, #{current_node.value} ) -> "
+      current_node = current_node.next_node_pointer
+    end
+
+    string += "nil"
+    string
   end
 end
 
