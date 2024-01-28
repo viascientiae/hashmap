@@ -115,6 +115,10 @@ class HashMap
 
     length
   end
+
+  def clear
+    @buckets = Array.new(capacity)
+  end
 end
 
 class LinkedList
