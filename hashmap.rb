@@ -105,6 +105,16 @@ class HashMap
       nil
     end
   end
+
+  def length
+    length = 0
+
+    @buckets.each do |bucket|
+      length += bucket.size if bucket != nil
+    end
+
+    length
+  end
 end
 
 class LinkedList
@@ -190,6 +200,18 @@ class LinkedList
 
     string += "nil"
     string
+  end
+
+  def size
+    counter = 0
+    current_node = @head_node
+
+    while current_node != nil
+      counter += 1
+      current_node = current_node.next_node_pointer
+    end
+
+    counter
   end
 end
 
